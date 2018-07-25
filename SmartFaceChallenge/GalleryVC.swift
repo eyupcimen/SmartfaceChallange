@@ -86,25 +86,24 @@ class GalleryCell : UICollectionViewCell {
         setUpView()
     }
 
-    let imageView : UIImageView = {
+    lazy var imageView : UIImageView = {
         let imgView = UIImageView()
         imgView.backgroundColor = UIColor.white
         return imgView
     }()
 
     func getModel (model : NYModel )  {
-        self.imageView.backgroundColor = .red
+        self.imageView.backgroundColor = .white
         if let modl = model.multimedia {
-            if modl.count > 0  {
+            if !modl.isEmpty  {
                 let multimedia : MultimediaModel  = modl[1]
                 if let multiUrl = multimedia.url {
                     self.imageView.sd_setImage(with: URL(string: multiUrl ), placeholderImage: UIImage(named: "ec.png"))
                 }
             } else {
-                self.imageView.image = UIImage(named: "ec.png")
+                self.imageView.backgroundColor = .lightGray
             }
         }
-
     }
 
     func setUpView()  {

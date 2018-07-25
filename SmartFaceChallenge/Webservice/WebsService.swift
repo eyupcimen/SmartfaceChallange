@@ -66,7 +66,6 @@ class WebService {
                     dataString = NSString(data: responseData, encoding: String.Encoding.utf8.rawValue)
                 }
                 print("\n[Response]: \(uri)\n\(dataString ?? response.result.value!)\n")
-
                 if let object = Mapper<T>().map(JSON: response.result.value as! [String: Any]) {
                     success(object)
                     return
@@ -90,7 +89,6 @@ class WebService {
                     failure(Error(code: "unknown_error", error: NSLocalizedString("Genereic Service Error", comment: "")))
                     return
                 }
-                print("\n\n\n Buraya girmemeli")
             }
         }
     }
